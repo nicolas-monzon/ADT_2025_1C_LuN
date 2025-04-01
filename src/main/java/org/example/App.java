@@ -1,16 +1,20 @@
 package org.example;
 
-import org.example.model.List;
-import org.example.model.Vector2D;
+import org.example.model.Stack;
+import org.example.model.StaticStack;
+import org.example.util.StackUtil;
 
 public class App {
 
     public static void main(String[] args) {
-        List list = null;
-    }
-
-    public static void f(Vector2D vec) {
-        System.out.println(vec);
+        Stack stack = new StaticStack(); // SOLID
+        stack.add(1);
+        stack.add(2);
+        stack.add(3);
+        stack.add(4);
+        stack.add(5);
+        stack.add(6);
+        StackUtil.print(stack);
     }
 
 }
