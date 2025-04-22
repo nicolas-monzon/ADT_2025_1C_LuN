@@ -1,19 +1,19 @@
 package org.example.model;
 
-public class StaticStack implements Stack<Integer> {
+public class StaticStringStack implements Stack<String> {
 
     private static final int MAX_SIZE = 10000;
 
-    private final Integer[] array;
+    private final String[] array;
     private int count;
 
-    public StaticStack() {
-        array = new Integer[MAX_SIZE];
+    public StaticStringStack() {
+        array = new String[MAX_SIZE];
         count = 0;
     }
 
     @Override
-    public void add(Integer a) {
+    public void add(String a) {
         if(count == MAX_SIZE) {
             throw new RuntimeException("Stack is full");
         }
@@ -30,7 +30,7 @@ public class StaticStack implements Stack<Integer> {
     }
 
     @Override
-    public Integer getTop() {
+    public String getTop() {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el tope de una pila vacía.");
         }

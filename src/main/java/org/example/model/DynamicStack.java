@@ -1,24 +1,14 @@
 package org.example.model;
 
-public class StaticStack implements Stack<Integer> {
+import org.example.model.node.Node;
 
-    private static final int MAX_SIZE = 10000;
+public class DynamicStack implements Stack<Integer> {
 
-    private final Integer[] array;
-    private int count;
-
-    public StaticStack() {
-        array = new Integer[MAX_SIZE];
-        count = 0;
-    }
+    private Node top;
 
     @Override
     public void add(Integer a) {
-        if(count == MAX_SIZE) {
-            throw new RuntimeException("Stack is full");
-        }
-        array[count] = a;
-        count++;
+        top = new Node(a, top);
     }
 
     @Override
@@ -26,7 +16,7 @@ public class StaticStack implements Stack<Integer> {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacía.");
         }
-        count--;
+        top = top.getNext();
     }
 
     @Override
@@ -34,11 +24,11 @@ public class StaticStack implements Stack<Integer> {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el tope de una pila vacía.");
         }
-        return this.array[count - 1];
+        return this.top.getValue();
     }
 
     @Override
     public boolean isEmpty() {
-        return count == 0;
+        return this.top == null;
     }
 }
