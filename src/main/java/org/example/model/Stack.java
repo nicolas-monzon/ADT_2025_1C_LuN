@@ -1,6 +1,6 @@
 package org.example.model;
 
-public interface Stack {
+public interface Stack<T> {
 
     /**
      * Precondición: La pila no este llena
@@ -10,9 +10,9 @@ public interface Stack {
      * el calor valor dado en el tope.
      * @param a es un valor a apilar
      */
-    void add(int a);
+    void add(T a);
     void remove();
-    int getTop();
+    T getTop();
     boolean isEmpty();
 
 }

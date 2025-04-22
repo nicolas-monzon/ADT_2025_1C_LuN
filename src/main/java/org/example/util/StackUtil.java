@@ -9,18 +9,18 @@ public class StackUtil {
 
     }
 
-    public static Stack copy(Stack stack) {
-        Stack result = new StaticStack();
-        Stack aux = new StaticStack();
+    public static Stack<Integer> copy(Stack<Integer> stack) {
+        Stack<Integer> result = new StaticStack();
+        Stack<Integer> aux = new StaticStack();
 
         while(!stack.isEmpty()) {
-            int top = stack.getTop();
+            Integer top = stack.getTop();
             aux.add(top);
             stack.remove();
         }
 
         while(!aux.isEmpty()) {
-            int top = aux.getTop();
+            Integer top = aux.getTop();
             stack.add(top);
             result.add(top);
             aux.remove();
@@ -29,24 +29,24 @@ public class StackUtil {
         return result;
     }
 
-    public static void print(Stack stack) {
-        Stack copy = copy(stack);
+    public static void print(Stack<Integer> stack) {
+        Stack<Integer> copy = copy(stack);
 
         while(!copy.isEmpty()) {
-            int top = copy.getTop();
+            Integer top = copy.getTop();
             System.out.println(top);
             copy.remove();
         }
     }
 
-    public static void bubbleSort(Stack stack) {
+    public static void bubbleSort(Stack<Integer> stack) {
         int size = size(stack);
         for(int i = 0; i < size - 1; i++) {
             move(stack);
         }
     }
 
-    public static int size(Stack stack) {
+    public static int size(Stack<Integer> stack) {
         if (stack == null) {
             return 0;
         }
@@ -62,7 +62,7 @@ public class StackUtil {
         return 1 + size;
     }
 
-    private static void move(Stack stack) {
+    private static void move(Stack<Integer> stack) {
         if(stack == null) {
             return;
         }
@@ -71,14 +71,14 @@ public class StackUtil {
             return;
         }
 
-        int top = stack.getTop();
+        Integer top = stack.getTop();
         stack.remove();
         if(stack.isEmpty()) {
             stack.add(top);
             return;
         }
 
-        int next = stack.getTop();
+        Integer next = stack.getTop();
         stack.remove();
         if(top > next) {
             stack.add(top);
