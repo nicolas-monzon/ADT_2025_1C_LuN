@@ -1,5 +1,7 @@
 package org.example.util;
 
+import org.example.model.DynamicPriorityQueue;
+import org.example.model.PriorityQueue;
 import org.example.model.Stack;
 import org.example.model.StaticStack;
 
@@ -90,6 +92,20 @@ public class StackUtil {
         stack.add(next);
         move(stack);
         stack.add(top);
+    }
+
+    public static void sort(Stack<Integer> stack) {
+        PriorityQueue priorityQueue = new DynamicPriorityQueue();
+
+        while(!stack.isEmpty()) {
+            priorityQueue.add(stack.getTop(), 1);
+            stack.remove();
+        }
+
+        while(!priorityQueue.isEmpty()) {
+            stack.add(priorityQueue.getPriority());
+            priorityQueue.remove();
+        }
     }
 
 }
