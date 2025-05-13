@@ -7,7 +7,9 @@ public class StaticStack implements Stack<Integer> {
     private final Integer[] array;
     private int count;
 
-    public StaticStack() {
+    // Terms Rewriting System -> TeReSe
+
+    public StaticStack() { // C_1 + C_2 + C_3 + C_4 + C_5 entonces la complejidad es O(1)
         array = new Integer[MAX_SIZE];
         count = 0;
     }
