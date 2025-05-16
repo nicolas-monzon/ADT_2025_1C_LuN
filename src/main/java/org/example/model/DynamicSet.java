@@ -7,7 +7,7 @@ import java.util.Random;
 public class DynamicSet implements Set {
 
     private Node node;
-    private Random random;
+    private final Random random;
     private int size;
 
     public DynamicSet() {
@@ -83,6 +83,7 @@ public class DynamicSet implements Set {
                 return current.getValue();
             }
             i++;
+            current = current.getNext();
         }
         throw new RuntimeException("");
     }

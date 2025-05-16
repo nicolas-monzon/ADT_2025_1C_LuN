@@ -5,6 +5,10 @@ import org.example.model.StaticSet;
 
 public class SetUtil {
 
+    private SetUtil() {
+
+    }
+
     public static Set copy(Set set) { // O(C) + O(C) + O(n^2) + O(n^2) ~> O(n^2)
         Set aux = new StaticSet();
         Set result = new StaticSet();
