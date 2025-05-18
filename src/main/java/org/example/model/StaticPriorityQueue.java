@@ -66,6 +66,10 @@ public class StaticPriorityQueue implements PriorityQueue {
         if(isEmpty()) {
             throw new RuntimeException("Priority queue is empty");
         }
+        for(int i = count; i > 0; i--) {
+            values[i] = values[i - 1];
+            priorities[i] = priorities[i - 1];
+        }
         count--;
     }
 
