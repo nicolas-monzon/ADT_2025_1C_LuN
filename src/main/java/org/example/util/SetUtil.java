@@ -1,7 +1,9 @@
 package org.example.util;
 
 import org.example.model.Set;
+import org.example.model.SetOfSets;
 import org.example.model.StaticSet;
+import org.example.model.StaticSetOfSets;
 
 public class SetUtil {
 
@@ -155,6 +157,76 @@ public class SetUtil {
 
     public static Set symmetricDifferenceV2(Set set, Set set2) {
         return difference(union(set, set2), intersection(set, set2));
+    }
+
+    public static SetOfSets parts(Set set) { // N^2 + N^2(2^N) = (N^2 + 1)2^N -> O(N^2(2^N))
+        SetOfSets parts = new StaticSetOfSets();
+        int size = size(set);
+        int limit = (int) Math.pow(2, size);
+        int[] elements = map(set);
+
+        for(int i = 0; i < limit; i++) { // O(N^2(2^N))
+            boolean[] binary = map(i, size);
+            Set part = getPart(elements, binary);
+            parts.add(part);
+        }
+
+        return parts;
+    }
+
+    private static Set getPart(int[] elements, boolean[] flags) { // O(N^2)
+        Set result = new StaticSet(); // C
+
+        // for(a;b;c) { d } -> O(a) + O(x)*(O(b) + O(c) + O(d)) = O(C) + O(N)*(O(C) + O(C) + O(N)) = O(N^2)
+        for (int i = 0; i < elements.length; i++) {
+
+            // if a then b else c
+            // O(a) + max{O(b), O(c)}
+            if(flags[i]) { // O(C) + max{O(N), O(C)} = O(C) + O(N) = O(N)
+                result.add(elements[i]);
+            }
+        }
+
+        // while(a) {b} -> O(x)*(O(a) + O(b))
+        /*while(result.isEmpty()) {
+            //
+        }*/
+
+        return result;
+    }
+
+    // map que convierte n a un arreglo de booleanos con su representación binaria de len dígitos
+    private static boolean[] map(int n, int len) {
+        // 0 <= n < Math.pow(2, len)
+        boolean[] result = new boolean[len];
+        if(n == 0) {
+            return result;
+        }
+
+        int m = n;
+        int i = 0;
+        while(m != 0) {
+            result[i] = m % 2 == 1;
+            i++;
+            m /= 2;
+        }
+
+        return result;
+    }
+
+    private static int[] map(Set set) {
+        int[] result = new int[size(set)];
+        Set copy = copy(set);
+
+        int i = 0;
+        while(!copy.isEmpty()) {
+            int chosen = copy.choose();
+            result[i] = chosen;
+            copy.remove(chosen);
+            i++;
+        }
+
+        return result;
     }
 
 }
