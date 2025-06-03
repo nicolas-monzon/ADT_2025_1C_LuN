@@ -16,7 +16,7 @@ public class StaticStack implements Stack<Integer> {
 
     @Override
     public void add(Integer a) {
-        if(count == MAX_SIZE) {
+        if (count == MAX_SIZE) {
             throw new RuntimeException("Stack is full");
         }
         array[count] = a;
@@ -25,7 +25,7 @@ public class StaticStack implements Stack<Integer> {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacía.");
         }
         count--;
@@ -33,7 +33,7 @@ public class StaticStack implements Stack<Integer> {
 
     @Override
     public Integer getTop() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el tope de una pila vacía.");
         }
         return this.array[count - 1];

@@ -21,7 +21,7 @@ public class App {
         Set intersection = SetUtil.intersection(set, set2);
         int size = SetUtil.size(intersection);
 
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             int element = intersection.choose();
             System.out.println(element);
             intersection.remove(element);

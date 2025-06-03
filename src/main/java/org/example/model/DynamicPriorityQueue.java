@@ -8,49 +8,49 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public void add(int priority, int value) {
-        if(isEmpty()) {
+        if (isEmpty()) {
             first = new PriorityQueueNode(priority, value, null);
             return;
         }
 
         PriorityQueueNode current = first;
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             current = current.getNext();
         }
 
-        if(current.getPriority() <= priority) {
+        if (current.getPriority() <= priority) {
             current.setNext(new PriorityQueueNode(priority, value, null));
             return;
         }
 
-        if(first.getPriority() > priority) {
+        if (first.getPriority() > priority) {
             first = new PriorityQueueNode(priority, value, first);
             return;
         }
 
-        if(first.getNext() == null) {
+        if (first.getNext() == null) {
             return;
         }
 
         PriorityQueueNode prev = first;
         current = first.getNext();
 
-        while(current.getNext() != null) {
-            if(current.getPriority() > priority) {
+        while (current.getNext() != null) {
+            if (current.getPriority() > priority) {
                 prev.setNext(new PriorityQueueNode(priority, value, current));
                 return;
             }
             prev = current;
             current = current.getNext();
         }
-        if(current.getPriority() > priority) {
+        if (current.getPriority() > priority) {
             prev.setNext(new PriorityQueueNode(priority, value, current));
         }
     }
 
     @Override
     public void remove() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("Priority queue is empty");
         }
         first = first.getNext();
@@ -63,7 +63,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public int getFirst() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("Priority queue is empty");
         }
         return first.getValue();
@@ -71,7 +71,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
 
     @Override
     public int getPriority() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             throw new RuntimeException("Priority queue is empty");
         }
         return first.getPriority();

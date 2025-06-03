@@ -8,13 +8,13 @@ public class DynamicQueue implements Queue {
 
     @Override
     public void add(int a) {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             this.first = new Node(a, null);
             return;
         }
 
         Node candidate = first;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             candidate = candidate.getNext();
         }
 
@@ -23,11 +23,11 @@ public class DynamicQueue implements Queue {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desacolar una cola vacía.");
         }
 
-        if(this.first.getNext() == null) {
+        if (this.first.getNext() == null) {
             this.first = null;
             return;
         }
@@ -42,7 +42,7 @@ public class DynamicQueue implements Queue {
 
     @Override
     public int getFirst() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el primero de una cola vacía.");
         }
         return this.first.getValue();

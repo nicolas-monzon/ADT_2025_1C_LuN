@@ -13,7 +13,7 @@ public class DynamicStack implements Stack<Integer> {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacía.");
         }
         top = top.getNext();
@@ -21,7 +21,7 @@ public class DynamicStack implements Stack<Integer> {
 
     @Override
     public Integer getTop() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el tope de una pila vacía.");
         }
         return this.top.getValue();

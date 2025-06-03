@@ -14,7 +14,7 @@ public class StaticStringStack implements Stack<String> {
 
     @Override
     public void add(String a) {
-        if(count == MAX_SIZE) {
+        if (count == MAX_SIZE) {
             throw new RuntimeException("Stack is full");
         }
         array[count] = a;
@@ -23,7 +23,7 @@ public class StaticStringStack implements Stack<String> {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desapilar una pila vacía.");
         }
         count--;
@@ -31,7 +31,7 @@ public class StaticStringStack implements Stack<String> {
 
     @Override
     public String getTop() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el tope de una pila vacía.");
         }
         return this.array[count - 1];

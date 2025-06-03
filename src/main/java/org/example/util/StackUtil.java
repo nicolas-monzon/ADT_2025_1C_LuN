@@ -15,13 +15,13 @@ public class StackUtil {
         Stack<Integer> result = new StaticStack();
         Stack<Integer> aux = new StaticStack();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             Integer top = stack.getTop();
             aux.add(top);
             stack.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             Integer top = aux.getTop();
             stack.add(top);
             result.add(top);
@@ -34,7 +34,7 @@ public class StackUtil {
     public static void print(Stack<Integer> stack) {
         Stack<Integer> copy = copy(stack);
 
-        while(!copy.isEmpty()) {
+        while (!copy.isEmpty()) {
             Integer top = copy.getTop();
             System.out.println(top);
             copy.remove();
@@ -43,7 +43,7 @@ public class StackUtil {
 
     public static void bubbleSort(Stack<Integer> stack) {
         int size = size(stack);
-        for(int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size - 1; i++) {
             move(stack);
         }
     }
@@ -65,24 +65,24 @@ public class StackUtil {
     }
 
     private static void move(Stack<Integer> stack) {
-        if(stack == null) {
+        if (stack == null) {
             return;
         }
 
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             return;
         }
 
         Integer top = stack.getTop();
         stack.remove();
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             stack.add(top);
             return;
         }
 
         Integer next = stack.getTop();
         stack.remove();
-        if(top > next) {
+        if (top > next) {
             stack.add(top);
             move(stack);
             stack.add(next);
@@ -97,12 +97,12 @@ public class StackUtil {
     public static void sort(Stack<Integer> stack) {
         PriorityQueue priorityQueue = new DynamicPriorityQueue();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             priorityQueue.add(stack.getTop(), 1);
             stack.remove();
         }
 
-        while(!priorityQueue.isEmpty()) {
+        while (!priorityQueue.isEmpty()) {
             stack.add(priorityQueue.getPriority());
             priorityQueue.remove();
         }

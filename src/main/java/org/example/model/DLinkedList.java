@@ -10,7 +10,7 @@ public class DLinkedList implements List {
 
     @Override
     public void add(int a) {
-        if(node == null) {
+        if (node == null) {
             node = new DLinkedListNode(a, null, null);
             last = node;
             size++;
@@ -28,11 +28,11 @@ public class DLinkedList implements List {
 
     @Override
     public void remove() {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
 
-        if(node.getNext() == null) {
+        if (node.getNext() == null) {
             node = null;
             last = null;
             size--;
@@ -40,7 +40,7 @@ public class DLinkedList implements List {
         }
 
         DLinkedListNode current = node.getNext();
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             current = current.getNext();
         }
 
@@ -52,17 +52,17 @@ public class DLinkedList implements List {
 
     @Override
     public int get(int index) {
-        if(index < 0 || index >= size) {
+        if (index < 0 || index >= size) {
             throw new RuntimeException("Index out of bounds");
         }
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
 
         int count = 0;
         DLinkedListNode candidate = node;
-        while(candidate != null) {
-            if(count == index) {
+        while (candidate != null) {
+            if (count == index) {
                 return candidate.getValue();
             }
             candidate = candidate.getNext();

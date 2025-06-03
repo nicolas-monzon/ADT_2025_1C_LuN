@@ -116,7 +116,7 @@ public class SetUtil {
 
         while (!copy.isEmpty()) {
             int chosen = copy.choose();
-            if(in(chosen, set2)) {
+            if (in(chosen, set2)) {
                 result.add(chosen);
             }
             copy.remove(chosen);
@@ -136,7 +136,7 @@ public class SetUtil {
 
         while (!copy.isEmpty()) {
             int chosen = copy.choose();
-            if(!in(chosen, set2)) {
+            if (!in(chosen, set2)) {
                 result.add(chosen);
             }
             copy.remove(chosen);
@@ -165,7 +165,7 @@ public class SetUtil {
         int limit = (int) Math.pow(2, size);
         int[] elements = map(set);
 
-        for(int i = 0; i < limit; i++) { // O(N^2(2^N))
+        for (int i = 0; i < limit; i++) { // O(N^2(2^N))
             boolean[] binary = map(i, size);
             Set part = getPart(elements, binary);
             parts.add(part);
@@ -182,7 +182,7 @@ public class SetUtil {
 
             // if a then b else c
             // O(a) + max{O(b), O(c)}
-            if(flags[i]) { // O(C) + max{O(N), O(C)} = O(C) + O(N) = O(N)
+            if (flags[i]) { // O(C) + max{O(N), O(C)} = O(C) + O(N) = O(N)
                 result.add(elements[i]);
             }
         }
@@ -199,13 +199,13 @@ public class SetUtil {
     private static boolean[] map(int n, int len) {
         // 0 <= n < Math.pow(2, len)
         boolean[] result = new boolean[len];
-        if(n == 0) {
+        if (n == 0) {
             return result;
         }
 
         int m = n;
         int i = 0;
-        while(m != 0) {
+        while (m != 0) {
             result[i] = m % 2 == 1;
             i++;
             m /= 2;
@@ -219,7 +219,7 @@ public class SetUtil {
         Set copy = copy(set);
 
         int i = 0;
-        while(!copy.isEmpty()) {
+        while (!copy.isEmpty()) {
             int chosen = copy.choose();
             result[i] = chosen;
             copy.remove(chosen);

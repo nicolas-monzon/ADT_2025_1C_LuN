@@ -14,11 +14,11 @@ public class AlternativeStaticQueue implements Queue {
 
     @Override
     public void add(int a) {
-        if(count == MAX_SIZE) {
+        if (count == MAX_SIZE) {
             throw new RuntimeException("Queue is full");
         }
 
-        for(int i = count; i > 0; i--) {
+        for (int i = count; i > 0; i--) {
             array[i] = array[i - 1];
         }
 
@@ -28,7 +28,7 @@ public class AlternativeStaticQueue implements Queue {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede desacolar una cola vacía.");
         }
 
@@ -42,7 +42,7 @@ public class AlternativeStaticQueue implements Queue {
 
     @Override
     public int getFirst() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede obtener el primero de una cola vacía.");
         }
         return array[count - 1];

@@ -10,14 +10,14 @@ public class VersionedStackUtil {
         Queue result = new StaticQueue();
         int version = versionedStack.getCurrentVersion();
 
-        while(!versionedStack.isEmpty()) {
+        while (!versionedStack.isEmpty()) {
             result.add(versionedStack.getTop());
             versionedStack.remove();
         }
 
         int lastVersion = versionedStack.getCurrentVersion();
 
-        for(int i = version; i < lastVersion; i++) { // Si P(a)
+        for (int i = version; i < lastVersion; i++) { // Si P(a)
             versionedStack.removeVersion(i);
         }
 

@@ -12,7 +12,7 @@ public class HashTable implements Table {
 
     @Override
     public void add(String key, String value) {
-        if(key == null) {
+        if (key == null) {
             throw new RuntimeException("key is null");
         }
         values[key.hashCode() % SIZE] = value;
@@ -20,7 +20,7 @@ public class HashTable implements Table {
 
     @Override
     public String get(String key) {
-        if(key == null) {
+        if (key == null) {
             throw new RuntimeException("key is null");
         }
         return values[key.hashCode() % SIZE];
@@ -28,7 +28,7 @@ public class HashTable implements Table {
 
     @Override
     public void remove(String key) {
-        if(key == null) {
+        if (key == null) {
             throw new RuntimeException("key is null");
         }
         values[key.hashCode() % SIZE] = null;

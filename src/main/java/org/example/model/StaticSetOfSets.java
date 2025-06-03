@@ -8,8 +8,8 @@ public class StaticSetOfSets implements SetOfSets {
 
     private static final int MAX_SIZE = 8;
     private final Set[] values;
-    private int count;
     private final Random random;
+    private int count;
 
     public StaticSetOfSets() {
         random = new Random();
@@ -19,14 +19,14 @@ public class StaticSetOfSets implements SetOfSets {
 
     @Override
     public void add(Set a) {
-        if(count == MAX_SIZE) {
+        if (count == MAX_SIZE) {
             throw new RuntimeException("The set is full");
         }
-        if(a == null) {
+        if (a == null) {
             throw new RuntimeException("The set cannot be null");
         }
-        for(int i = 0; i < count; i++) {
-            if(SetUtil.equals(values[i], a)) {
+        for (int i = 0; i < count; i++) {
+            if (SetUtil.equals(values[i], a)) {
                 return;
             }
         }
@@ -35,9 +35,9 @@ public class StaticSetOfSets implements SetOfSets {
 
     @Override
     public void remove(Set a) {
-        for(int i = 0; i < count; i++) {
-            if(SetUtil.equals(values[i], a)) {
-                values[i] = values[count-1];
+        for (int i = 0; i < count; i++) {
+            if (SetUtil.equals(values[i], a)) {
+                values[i] = values[count - 1];
                 count--;
                 return;
             }
@@ -46,7 +46,7 @@ public class StaticSetOfSets implements SetOfSets {
 
     @Override
     public Set choose() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("The set is empty");
         }
         int index = random.nextInt(count);

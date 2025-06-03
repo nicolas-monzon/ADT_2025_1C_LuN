@@ -28,14 +28,14 @@ public class StaticMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void add(int key, int value) {
-        for(int i = 0; i < count; i++) {
-            if(matrix[i][0] == key) {
-                for(int j = 0; j < matrix[i][1]; j++) {
-                    if(matrix[i][j + 2] == value) {
+        for (int i = 0; i < count; i++) {
+            if (matrix[i][0] == key) {
+                for (int j = 0; j < matrix[i][1]; j++) {
+                    if (matrix[i][j + 2] == value) {
                         return;
                     }
                 }
-                if(matrix[i][1] == Integer.MAX_VALUE) {
+                if (matrix[i][1] == Integer.MAX_VALUE) {
                     throw new RuntimeException("The dictionary is full");
                 }
                 matrix[i][matrix[i][1] + 2] = value;
@@ -43,7 +43,7 @@ public class StaticMultipleDictionary implements MultipleDictionary {
                 return;
             }
         }
-        if(count == Integer.MAX_VALUE) {
+        if (count == Integer.MAX_VALUE) {
             throw new RuntimeException("The dictionary is full");
         }
         matrix[count] = new int[MAX];
@@ -56,9 +56,9 @@ public class StaticMultipleDictionary implements MultipleDictionary {
     @Override
     public List get(int key) {
         List list = new DLinkedList();
-        for(int i = 0; i < count; i++) {
-            if(matrix[i][0] == key) {
-                for(int j = 0; j < matrix[i][1]; j++) {
+        for (int i = 0; i < count; i++) {
+            if (matrix[i][0] == key) {
+                for (int j = 0; j < matrix[i][1]; j++) {
                     list.add(matrix[i][j + 2]);
                 }
                 return list;
@@ -69,15 +69,15 @@ public class StaticMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void remove(int key, int value) {
-        for(int i = 0; i < count; i++) {
-            if(matrix[i][0] == key) {
-                for(int j = 0; j < matrix[i][1]; j++) {
-                    if(matrix[i][j + 2] == value) {
-                        for(int k = j + 2; k < matrix[i][2]; k++) {
+        for (int i = 0; i < count; i++) {
+            if (matrix[i][0] == key) {
+                for (int j = 0; j < matrix[i][1]; j++) {
+                    if (matrix[i][j + 2] == value) {
+                        for (int k = j + 2; k < matrix[i][2]; k++) {
                             matrix[i][k] = matrix[i][k + 1];
                         }
                         matrix[i][1]--;
-                        if(matrix[i][1] == 0) {
+                        if (matrix[i][1] == 0) {
                             matrix[i] = matrix[count - 1];
                             count--;
                         }
@@ -93,7 +93,7 @@ public class StaticMultipleDictionary implements MultipleDictionary {
     public Set getKeys() {
         Set set = new StaticSet();
 
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             set.add(matrix[i][0]);
         }
 

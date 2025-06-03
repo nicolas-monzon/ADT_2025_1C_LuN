@@ -9,23 +9,23 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public void add(int key, int value) {
-        if(node == null) {
+        if (node == null) {
             node = new KeyNode(key, new ValueNode(value, null), null);
             return;
         }
 
         KeyNode current = node;
-        while(current.getNext() != null) {
-            if(current.getKey() == key) {
-                if(current.getValues().getValue() != value) {
+        while (current.getNext() != null) {
+            if (current.getKey() == key) {
+                if (current.getValues().getValue() != value) {
                     throw new RuntimeException("Duplicate key");
                 }
                 return;
             }
             current = current.getNext();
         }
-        if(current.getKey() == key) {
-            if(current.getValues().getValue() != value) {
+        if (current.getKey() == key) {
+            if (current.getValues().getValue() != value) {
                 throw new RuntimeException("Duplicate key");
             }
             return;
@@ -36,8 +36,8 @@ public class DynamicDictionary implements Dictionary {
     @Override
     public int get(int key) {
         KeyNode current = node;
-        while(current != null) {
-            if(current.getKey() == key) {
+        while (current != null) {
+            if (current.getKey() == key) {
                 return current.getValues().getValue();
             }
             current = current.getNext();
@@ -47,13 +47,13 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public void remove(int key, int value) {
-        if(node == null) {
+        if (node == null) {
             return;
         }
 
-        if(node.getNext() == null) {
-            if(node.getKey() == key) {
-                if(node.getValues().getValue() == value) {
+        if (node.getNext() == null) {
+            if (node.getKey() == key) {
+                if (node.getValues().getValue() == value) {
                     node = null;
                 }
                 return;
@@ -62,7 +62,7 @@ public class DynamicDictionary implements Dictionary {
 
         KeyNode previous = node;
         KeyNode current = node.getNext();
-        while(current != null) {
+        while (current != null) {
             if (current.getKey() == key) {
                 if (current.getValues().getValue() == value) {
                     previous.setNext(current.getNext());
@@ -78,7 +78,7 @@ public class DynamicDictionary implements Dictionary {
     public Set getKeys() {
         DynamicSet set = new DynamicSet();
         KeyNode current = node;
-        while(current != null) {
+        while (current != null) {
             set.add(current.getKey());
             current = current.getNext();
         }

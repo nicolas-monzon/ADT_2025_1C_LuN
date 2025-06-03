@@ -20,7 +20,7 @@ public class StaticVersionedStack implements VersionedStack {
 
     @Override
     public void add(int a) {
-        if(versionCount == MAX_SIZE) {
+        if (versionCount == MAX_SIZE) {
             throw new RuntimeException("Stack is full");
         }
         biarray[versionCount] = Arrays.copyOf(biarray[versionCount - 1], biarray[versionCount - 1].length);

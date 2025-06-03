@@ -10,11 +10,11 @@ public class QueueUtil {
     }
 
     public static void revert(Queue queue) {
-        if(queue == null) {
+        if (queue == null) {
             return;
         }
 
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             return;
         }
 
@@ -28,13 +28,13 @@ public class QueueUtil {
         Queue result = new StaticQueue();
         Queue aux = new StaticQueue();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int first = queue.getFirst();
             aux.add(first);
             queue.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int first = aux.getFirst();
             queue.add(first);
             result.add(first);
@@ -50,19 +50,19 @@ public class QueueUtil {
     }
 
     private static void printAux(Queue queue) {
-        if(queue == null) {
+        if (queue == null) {
             System.out.println("null");
             return;
         }
 
         String aux = "";
 
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             System.out.println();
             return;
         }
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int first = queue.getFirst();
 
             aux = aux + ", " + first;

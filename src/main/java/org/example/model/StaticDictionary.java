@@ -15,9 +15,9 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public void add(int key, int value) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == key) {
-                if(values[i] != value) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == key) {
+                if (values[i] != value) {
                     throw new RuntimeException("Duplicate key");
                 }
                 return;
@@ -30,8 +30,8 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public int get(int key) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == key) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == key) {
                 return values[i];
             }
         }
@@ -40,9 +40,9 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public void remove(int key, int value) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == key) {
-                if(values[i] == value) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == key) {
+                if (values[i] == value) {
                     keys[i] = keys[count - 1];
                     values[i] = values[count - 1];
                     count--;
@@ -56,7 +56,7 @@ public class StaticDictionary implements Dictionary {
     public Set getKeys() {
         Set set = new StaticSet();
 
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             set.add(keys[i]);
         }
 

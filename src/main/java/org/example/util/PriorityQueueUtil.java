@@ -13,20 +13,19 @@ public class PriorityQueueUtil {
         PriorityQueue aux = new DynamicPriorityQueue();
         PriorityQueue result = new DynamicPriorityQueue();
 
-        while(!priorityQueue.isEmpty()) {
+        while (!priorityQueue.isEmpty()) {
             aux.add(priorityQueue.getPriority(), priorityQueue.getFirst());
             result.add(priorityQueue.getPriority(), priorityQueue.getFirst());
             priorityQueue.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             priorityQueue.add(aux.getPriority(), aux.getFirst());
             aux.remove();
         }
 
         return result;
     }
-
 
 
 }
